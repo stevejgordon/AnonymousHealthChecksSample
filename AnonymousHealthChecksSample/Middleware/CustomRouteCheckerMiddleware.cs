@@ -14,7 +14,7 @@ namespace AnonymousHealthChecksSample.Middleware
         public async Task InvokeAsync(HttpContext context)
         {
             var endpoint = context.GetEndpoint();
-            if (endpoint?.Metadata.GetMetadata<IAllowAnonymous>() is object)
+            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() is object)
             {
                 await _next(context);
                 return;
